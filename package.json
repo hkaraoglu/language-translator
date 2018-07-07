@@ -1,47 +1,15 @@
 {
-  "_args": [
-    [
-      {
-        "raw": "multilanguage-1.0.0.tgz",
-        "scope": null,
-        "escapedName": "multilanguage-1.0.0.tgz",
-        "name": null,
-        "rawSpec": "multilanguage-1.0.0.tgz",
-        "spec": "/Users/hasankaraoglu/Development/web/multi-language-module-example/multilanguage-1.0.0.tgz",
-        "type": "local"
-      },
-      "/Users/hasankaraoglu/Development/web/multi-language-module-example"
-    ]
-  ],
-  "_from": "multilanguage-1.0.0.tgz",
-  "_id": "multilanguage@1.0.0",
-  "_inCache": true,
-  "_location": "/multilanguage",
-  "_phantomChildren": {},
-  "_requested": {
-    "raw": "multilanguage-1.0.0.tgz",
-    "scope": null,
-    "escapedName": "multilanguage-1.0.0.tgz",
-    "name": null,
-    "rawSpec": "multilanguage-1.0.0.tgz",
-    "spec": "/Users/hasankaraoglu/Development/web/multi-language-module-example/multilanguage-1.0.0.tgz",
-    "type": "local"
-  },
-  "_requiredBy": [
-    "#USER"
-  ],
-  "_resolved": "file:multilanguage-1.0.0.tgz",
-  "_shasum": "bf865d6348c1a49d1778d7bc5ea893935dbbe1e4",
-  "_shrinkwrap": null,
-  "_spec": "multilanguage-1.0.0.tgz",
-  "_where": "/Users/hasankaraoglu/Development/web/multi-language-module-example",
-  "dependencies": {},
-  "description": "Language translation module for nodeJS",
-  "devDependencies": {},
-  "name": "multilanguage",
-  "optionalDependencies": {},
-  "private": true,
-  "readme": "# multilanguage-node\nLanguage translation module for nodeJS\n\n\nText translation module. It benefits from Express possibilities.\n\n## **Install**\n\n    npm install multilanguage --save\n\n\n## *Load*\n\n    var  multiLanguage = require('multiLanguage');\n    app.use(multiLanguage(\n      {\n        langDir     : \"language\",\n        langs       : [\"tr\", \"en\"],\n        defaultLang : \"en\",\n        cookieName  : \"lang\",\n        accessName  : \"lang\"\n    }));\n\n\n\n\n## Configuration Parameters\n\n*langs : Required*\n\nThe module creates folders which takes an json array from configuration json. The array is required.\n\n\n*defaultLang: Required*\n\nThe module choose a language to choose a language folder as a default when cookie language is not be set. The defaultLang is required.\n\n\n*langDir : Optional*\n\nThe module creates a root folder which takes its name from configuration json. The folder name is optional. Default name is ***language***.\n\n*cookieName : Optional*\n\nThe module creates a cookie to know user's language preference which requested before. Default cookie name is ***language***.\n\naccessName : Optional\n\nThe module load language file data into a variable. Default accessName is **lang**.\n\n\nformatFuncName : Optional\n\nThe module offer a function to output formatted string.  Default accessName is **sprintf**.\n\n\n## Usage\n\nWhen your app started, firstly the module creates **language** folder in root directory. Then, it creates folders which names are in **langs** array.  Then, it creates a json file which name is same as its folder name for common texts. And it creates a mapping.json file which is used to match route paths and language files.\n\n**For example:**\n\n    langs : [\"tr\", \"en\"]\n\n\n ---\n\n     your_app_folder\n         -> language\n    \t      -> tr\n    \t        -> tr.json // It creates for common texts\n    \t\t    -> And your other language files...\n    \t      -> en\n    \t\t    -> en.json // It creates for common texts\n    \t\t    -> And your other language files...\n\t\t      -> mapping.json\n\n\n\n---\n\n\n## mapping.json\n\nExample:\n\n ---\n**Your Application directory:**\n\n     your_app_folder\n         -> language\n    \t      -> tr\n    \t        -> tr.json // It creates for common texts\n    \t\t    -> home.json\n    \t\t    -> about.json\n    \t      -> en\n    \t\t    -> en.json // It creates for common texts\n    \t\t    -> home.json\n    \t\t    -> about.json\n\t\t      -> mapping.json\n\n\n**mapping.json**\n\n{\n\t\"/\" \t\t   : \"home\",\n\t\"/about\" :  \"about\"\n }\n\nThis file matches your routes and language files.\n",
-  "readmeFilename": "README.md",
-  "version": "1.0.0"
+    "name": "language-translator",
+    "version": "1.0.0",
+    "description": "Language translation module for nodeJS",
+    "preferGlobal": "true",
+    "main": "index.js",
+    "bin": { "language-translator": "index.js" },
+    "author": "Hasan Karaoğlu",
+    "keywords": ["multilanguage", "translator", "language", "multi"],
+    "repository" : {
+        "type": "git",
+        "url": "https://github.com/hkaraoglu/language-translator"
+    },
+    "engines": { "node": "*" }
 }
