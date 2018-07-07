@@ -1,4 +1,4 @@
-# multilanguage-node
+# language-translator
 Language translation module for nodeJS
 
 
@@ -6,13 +6,13 @@ Text translation module. It benefits from Express possibilities.
 
 ## **Install**
 
-    npm install multilanguage --save
+    npm install language-translator --save
 
 
 ## *Load*
 
-    var  multiLanguage = require('multiLanguage');
-    app.use(multiLanguage(
+    var  languageTranslator = require('language-translator');
+    app.use(languageTranslator(
       {
         langDir     : "language",
         langs       : ["tr", "en"],
