@@ -103,9 +103,10 @@ function init(_config)
    var mapping = load(mappingFilePath);
    data = load(commonFilePath);
 
-   if(mapping[req.path] != undefined)
+   var mappingValue = getMappingValue(req.path, mapping);
+   if(mappingValue != "")
    {
-      var currentFilePath = app_directory + config.langDir + "/" + getLang() + "/" + mapping[req.path] + ".json";
+      var currentFilePath = app_directory + config.langDir + "/" + getLang() + "/" + mappingValue + ".json";
       data = Object.assign(data, load(currentFilePath));
    }
    if(res.locals == undefined)
@@ -115,7 +116,7 @@ function init(_config)
 
    if(res.locals[config.accessName] == undefined)
    {
-     res.locals[config.accessName] = data;
+       res.locals[config.accessName] = data;
    }
 
    if(res[config.formatFuncName] == undefined)
@@ -128,7 +129,36 @@ function init(_config)
   };
 }
 
+function getMappingValue(path, mapping)
+{
+    if(path.length >= 2 && path.substr(path.length - 1) == "/")
+    {
+      path = path.substr(0, path.length - 1);
+    }
+    var pathSegments = path.split("/");
+    for(var key in mapping)
+    {
+      var mappingSegments = key.split('/');
+      if(mappingSegments.length == pathSegments.length)
+      {
+        var isEqual = true;
+        for(var j = 0 ; j < mappingSegments.length; j++)
+        {
+            if(mappingSegments[j].substr(0, 1) != ":" && mappingSegments[j] != pathSegments[j])
+            {
+               isEqual = false;
+               break;
+            }
+        }
+        if(isEqual)
+        {
+          return mapping[key];
+        }
+      }
+    }
 
+    return "";
+}
 
 function createFile(path_parts, content)
 {

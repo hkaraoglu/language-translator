@@ -2,7 +2,7 @@
 Language translation module for nodeJS
 
 
-Text translation module. It benefits from Express possibilities.
+Text translation module. It benefits from Express 4.x possibilities.
 
 ## **Install**
 
@@ -107,4 +107,4 @@ Example:
 	"/about" :  "about"
  }
 
-This file matches your routes and language files.
+This file matches your routes and language files. It supports parametrized urls.

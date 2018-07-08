@@ -1,12 +1,12 @@
 {
     "name": "language-translator",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "description": "Language translation module for nodeJS",
     "preferGlobal": "true",
     "main": "index.js",
     "bin": { "language-translator": "index.js" },
     "author": "Hasan Karaoğlu",
-    "keywords": ["multilanguage", "translator", "language", "multi"],
+    "keywords": ["multilanguage", "translator", "language", "multi", "localization"],
     "repository" : {
         "type": "git",
         "url": "https://github.com/hkaraoglu/language-translator"
