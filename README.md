@@ -77,6 +77,32 @@ When your app started, firstly the module creates **language** folder in root di
 	      -> mapping.json
 
 
+--
+**en.json file content:**
+
+    {
+    	"example" 			: "Example Text",
+    	"example_with_param": "Example %s"
+    }
+
+**On view file usage (Example for .ejs):**
+
+    <%=  lang.example  %>
+
+**Formatted:**
+
+    <%=  sprintf(example_with_param, "Param value")  %>
+
+--
+
+**On js file usage**
+
+     console.log(res.lang.example)
+
+**Formatted:**
+
+
+      console.log(res.sprintf(example, "Param value"))
 
 ---
 
@@ -85,7 +111,6 @@ When your app started, firstly the module creates **language** folder in root di
 
 Example:
 
- ---
 **Your Application directory:**
 
      your_app_folder
@@ -109,4 +134,4 @@ Example:
     	"/users/:user_id" : "users"
      }
 
-This file matches your routes and language files. It supports parametrized and querized urls.
+This file matches your routes and language files. It supports parametrized urls.
