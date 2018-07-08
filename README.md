@@ -69,11 +69,11 @@ When your app started, firstly the module creates **language** folder in root di
          -> language
     	      -> tr
     	        -> tr.json // It creates for common texts
-    		    -> And your other language files...
+    		-> And your other language files...
     	      -> en
-    		    -> en.json // It creates for common texts
-    		    -> And your other language files...
-		      -> mapping.json
+    		-> en.json // It creates for common texts
+    		-> And your other language files...
+	      -> mapping.json
 
 
 
@@ -91,19 +91,19 @@ Example:
          -> language
     	      -> tr
     	        -> tr.json // It creates for common texts
-    		    -> home.json
-    		    -> about.json
+    		-> home.json
+    		-> about.json
     	      -> en
     		    -> en.json // It creates for common texts
     		    -> home.json
     		    -> about.json
-		      -> mapping.json
+	      -> mapping.json
 
 
 **mapping.json**
 
 {
-	"/" 		   : "home",
+	"/" 	 : "home",
 	"/about" :  "about"
  }
 
