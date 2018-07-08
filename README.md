@@ -1,3 +1,4 @@
+
 # language-translator
 Language translation module for nodeJS
 
@@ -102,9 +103,10 @@ Example:
 
 **mapping.json**
 
-{
-	"/" 	 : "home",
-	"/about" :  "about"
- }
+    {
+    	"/" 	 		  : "home",
+    	"/about" 		  : "about",
+    	"/users/:user_id" : "users"
+     }
 
-This file matches your routes and language files. It supports parametrized urls.
+This file matches your routes and language files. It supports parametrized and querized urls.
