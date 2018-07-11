@@ -125,7 +125,7 @@ Example:
 			-> home.json
 			-> about.json
 			-> users.json   
-	      -> mapping.json
+	          -> mapping.json
 
 
 **mapping.json**
