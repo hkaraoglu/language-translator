@@ -6,6 +6,7 @@
     "main": "index.js",
     "bin": { "language-translator": "index.js" },
     "author": "Hasan Karaoğlu",
+    "license": "MIT",
     "keywords": ["multilanguage", "translator", "language", "multi", "localization"],
     "repository" : {
         "type": "git",
