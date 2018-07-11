@@ -119,7 +119,7 @@ Example:
     	        -> tr.json // It is used for common texts
     		-> home.json
     		-> about.json
-		-> users.json
+			-> users.json
     	      -> en
 			-> en.json // It is used for common texts
 			-> home.json
