@@ -15,11 +15,12 @@ Text translation module. It benefits from Express 4.x possibilities.
     var  languageTranslator = require('language-translator');
     app.use(languageTranslator(
       {
-        langDir     : "language",
-        langs       : ["tr", "en"],
-        defaultLang : "en",
-        cookieName  : "lang",
-        accessName  : "lang"
+        langDir        : "language",
+        langs          : ["tr", "en"],
+        defaultLang    : "en",
+        cookieName     : "lang",
+        accessName     : "lang",
+	    formatFuncName : "sprintf"
     }));
 
 
@@ -81,7 +82,7 @@ When your app started, firstly the module creates **language** folder in root di
 **en.json file content:**
 
     {
-    	"example" 			: "Example Text",
+    	"example"           : "Example Text",
     	"example_with_param": "Example %s"
     }
 
