@@ -116,13 +116,15 @@ Example:
      your_app_folder
          -> language
     	      -> tr
-    	        -> tr.json // It creates for common texts
+    	        -> tr.json // It is used for common texts
     		-> home.json
     		-> about.json
+		-> users.json
     	      -> en
-    		    -> en.json // It creates for common texts
-    		    -> home.json
-    		    -> about.json
+	        -> en.json // It is used for common texts
+	        -> home.json
+	        -> about.json
+		-> users.json   
 	      -> mapping.json
 
 
