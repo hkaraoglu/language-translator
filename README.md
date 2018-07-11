@@ -53,7 +53,7 @@ The module load language file data into a variable. Default accessName is **lang
 
 formatFuncName : Optional
 
-The module offer a function to output formatted string.  Default accessName is **sprintf**.
+The module offer a function to output formatted string.  Default formatFuncName is **sprintf**.
 
 
 ## Usage
