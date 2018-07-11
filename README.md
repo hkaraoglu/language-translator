@@ -121,10 +121,10 @@ Example:
     		-> about.json
 		-> users.json
     	      -> en
-	        -> en.json // It is used for common texts
-	        -> home.json
-	        -> about.json
-		-> users.json   
+			-> en.json // It is used for common texts
+			-> home.json
+			-> about.json
+			-> users.json   
 	      -> mapping.json
 
 
