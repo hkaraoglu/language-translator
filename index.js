@@ -30,7 +30,7 @@ function init(_config)
   config.cookieName     = (config.cookieName == undefined)     ? "language" : config.cookieName;
   config.accessName     = (config.accessName == undefined)     ? "lang"     : config.accessName;
   config.formatFuncName = (config.formatFuncName == undefined) ? "sprintf"  : config.formatFuncName;
-
+  config.equalizeKeys   = (config.equalizeKeys == undefined)   ? true       : config.equalizeKeys;
   if(config.langs == undefined || config.langs.length == 0)
   {
      throw "langs must not be undefined and empty!";
@@ -72,6 +72,11 @@ function init(_config)
 
   };
   createFile([config.langDir, "mapping.json"], JSON.stringify(content, null, "\t"));
+
+  if(config.equalizeKeys)
+  {
+    equalizeLangFilesEachOther();
+  }
 
   return function onRequest(req, res, next)
   {
@@ -129,6 +134,38 @@ function init(_config)
   };
 }
 
+function equalizeLangFilesEachOther()
+{
+  var defaultLanguageFolderPath = config.langDir + "/" + config.defaultLang + "/";
+  config.langs.forEach(function(item)
+  {
+    if(item !== config.defaultLang)
+    {
+      fs.readdirSync(defaultLanguageFolderPath).forEach(file =>
+      {
+          if(file != config.defaultLang + ".json")
+          {
+            var defaultLangJsonFilePath = config.langDir + "/" + config.defaultLang + "/" + file;
+            var currentLangJsonFilePath = config.langDir + "/" + item + "/" + file;
+            defaultLangJsonFileJson  = load(defaultLangJsonFilePath);
+            createFile([config.langDir, item, file], JSON.stringify({}, null, "\t"));
+            currentLangJsonFileJson  = load(currentLangJsonFilePath);
+
+            for(var key in defaultLangJsonFileJson)
+            {
+               if(currentLangJsonFileJson[key] == undefined)
+               {
+                  currentLangJsonFileJson[key] = defaultLangJsonFileJson[key];
+               }
+            }
+            save(currentLangJsonFilePath, JSON.stringify(currentLangJsonFileJson, null, "\t"));
+          }
+      });
+    }
+
+  });
+}
+
 function getMappingValue(path, mapping)
 {
     if(path.length >= 2 && path.substr(path.length - 1) == "/")
@@ -179,7 +216,7 @@ function createFile(path_parts, content)
   {
     fs.writeFileSync(filePath, content, 'utf8', function (err) {
         if (err) {
-            return console.log(err);
+           console.log(err);
         }
     });
   }
@@ -214,6 +251,15 @@ function getLang()
 function load(filePath)
 {
   return JSON.parse(fs.readFileSync(filePath, "utf8"));
+}
+
+function save(filePath, content)
+{
+  fs.writeFileSync(filePath, content, 'utf8', function (err) {
+      if (err) {
+         console.log(err);
+      }
+  });
 }
 
 

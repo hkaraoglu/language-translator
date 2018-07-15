@@ -9,7 +9,7 @@ It benefits from Express 4.x possibilities. It requires Express.
     npm install language-translator --save
 
 
-## *Load*
+## **Load**
 
     var  languageTranslator = require('language-translator');
     app.use(languageTranslator(
@@ -27,21 +27,21 @@ It benefits from Express 4.x possibilities. It requires Express.
 
 ## Configuration Parameters
 
-*langs : Required*
+langs : Required
 
 The module creates folders which takes an json array from configuration json. The array is required.
 
 
-*defaultLang: Required*
+defaultLang: Required
 
 The module choose a language to choose a language folder as a default when cookie language is not be set. The defaultLang is required.
 
 
-*langDir : Optional*
+langDir : Optional
 
 The module creates a root folder which takes its name from configuration json. The folder name is optional. Default name is ***language***.
 
-*cookieName : Optional*
+cookieName : Optional
 
 The module creates a cookie to know user's language preference which requested before. Default cookie name is ***language***.
 
@@ -53,6 +53,11 @@ The module load language file data into a variable. Default accessName is **lang
 formatFuncName : Optional
 
 The module offer a function to output formatted string.  Default formatFuncName is **sprintf**.
+
+
+equalizeKeys : Optional
+
+The module offer an option to equalize keys of default language's json files with other languages. For example, you created a json file in default language folder but not in other language folders. When you restart node server, module creates all files and keys in other language folders for you. Default value is true. (Recommended)
 
 
 ## Usage
