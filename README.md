@@ -1,9 +1,9 @@
 
 
 # language-translator
-Text localization module for nodeJS
+Text localization and translation module for nodeJS
 
-It benefits from Express 4.x possibilities. It requires Express.
+It requires ExpressJS.
 
 ## **Install**
 
