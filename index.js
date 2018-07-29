@@ -2,6 +2,7 @@ var fs = require('fs');
 var app_directory = "";
 var config = {};
 var data = {};
+var translator = require('./translate');
 
 var get = function(key)
 {
@@ -31,6 +32,8 @@ function init(_config)
   config.accessName     = (config.accessName == undefined)     ? "lang"     : config.accessName;
   config.formatFuncName = (config.formatFuncName == undefined) ? "sprintf"  : config.formatFuncName;
   config.equalizeKeys   = (config.equalizeKeys == undefined)   ? true       : config.equalizeKeys;
+  config.translate      = (config.translate == undefined)      ? true       : config.translate;
+
   if(config.langs == undefined || config.langs.length == 0)
   {
      throw "langs must not be undefined and empty!";
@@ -40,6 +43,12 @@ function init(_config)
      throw "defaultLang is invalid!";
   }
 
+  if(config.translate && config.translationApiKey == undefined)
+  {
+     throw "translationApiKey is invalid!";
+  }
+
+  translator(config.translationApiKey);
   createDir([config.langDir]);
   config.langs.forEach(function(item)
   {
@@ -137,6 +146,8 @@ function init(_config)
 function equalizeLangFilesEachOther()
 {
   var defaultLanguageFolderPath = config.langDir + "/" + config.defaultLang + "/";
+  var promises = {};
+
   config.langs.forEach(function(item)
   {
     if(item !== config.defaultLang)
@@ -151,19 +162,37 @@ function equalizeLangFilesEachOther()
             createFile([config.langDir, item, file], JSON.stringify({}, null, "\t"));
             currentLangJsonFileJson  = load(currentLangJsonFilePath);
 
+            promises[currentLangJsonFilePath] = [];
             for(var key in defaultLangJsonFileJson)
             {
                if(currentLangJsonFileJson[key] == undefined)
                {
-                  currentLangJsonFileJson[key] = defaultLangJsonFileJson[key];
+                 promises[currentLangJsonFilePath].push(translator.translate(config.defaultLang, item, key, defaultLangJsonFileJson[key], currentLangJsonFilePath));
                }
             }
-            save(currentLangJsonFilePath, JSON.stringify(currentLangJsonFileJson, null, "\t"));
           }
       });
     }
-
   });
+
+  for(key in promises)
+  {
+      Promise.all(promises[key]).then(function(translatedTexts)
+      {
+        if(translatedTexts.length > 0)
+        {
+            var json  = load(translatedTexts[0].filePath);
+            var filePath = translatedTexts[0].filePath;
+            translatedTexts.forEach(function(translatedText)
+            {
+               json[translatedText.key] = translatedText.value;
+            });
+
+            save(filePath, JSON.stringify(json, null, "\t"));
+        }
+      });
+  }
+
 }
 
 function getMappingValue(path, mapping)
@@ -261,7 +290,5 @@ function save(filePath, content)
       }
   });
 }
-
-
 
 module.exports      = init;
