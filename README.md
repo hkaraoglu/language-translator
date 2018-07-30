@@ -161,3 +161,8 @@ Example:
      }
 
 This file matches your routes and language files. It supports parametrized urls.
+
+
+
+References:
+“Medium.com - Nodejs text localization module” https://medium.com/@hkaraoglutr/nodejs-text-localization-module-687d3d285c3a
