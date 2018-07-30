@@ -16,7 +16,7 @@ It requires ExpressJS.
     app.use(languageTranslator(
       {
         langDir        : "language",
-        langs          : ["tr", "en"],
+        langs          : ["tr", "en", "fr", "de", "es"], // ... And other languages
         defaultLang    : "en",
         cookieName     : "lang",
         accessName     : "lang",
