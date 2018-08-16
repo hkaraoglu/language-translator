@@ -1,7 +1,7 @@
 {
     "name": "language-translator",
-    "version": "1.2.0",
-    "description": "Language translation module for nodeJS",
+    "version": "1.2.1",
+    "description": "Language localization and text translation module for nodeJS Express framework",
     "preferGlobal": "true",
     "main": "index.js",
     "bin": { "language-translator": "index.js" },
