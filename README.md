@@ -17,8 +17,8 @@ Text localization and translation module for NodeJS Express Framework.
       {
         langs          : ["tr", "en", "fr", "de", "es"], // ... And other languages
         defaultLang    : "en",
-	cookieName     : "lang",
-	translate      : "true",
+	    cookieName     : "lang",
+	    translate      : "true",
         translationApiKey: "{{your_yandex_translate_api_key}}"
     }));
 
