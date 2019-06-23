@@ -112,7 +112,7 @@ When your app started, firstly the module creates **language** folder in root di
 
      var _lt = res.locals._lt;
      _lt.load("home");
-     console.log(_lt.get("some_text", "deneme"));
+     console.log(_lt.get("example_with_param", "Param value"));
 ---
 
 
