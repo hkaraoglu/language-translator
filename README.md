@@ -44,16 +44,6 @@ The module creates a root folder which takes its name from configuration json. T
 
 The module creates a cookie to know user's language preference which requested before. Default cookie name is *language*.
 
-**accessName**
-
-The module load language file data into a variable. Default 	accessName is *lang*.
-
-
-**formatFuncName**
-
-The module offer a function to output formatted string.  Default formatFuncName is **sprintf**.
-
-
 **equalizeKeys**
 
 The module offer an option to equalize keys of default language's json files with other languages. For example, you created a json file in default language folder but not in other language folders. When you restart node server, module creates all files and keys in other language folders for you. Default value is true. (Recommended)
@@ -108,23 +98,19 @@ When your app started, firstly the module creates **language** folder in root di
 
 **On view file usage (Example for .ejs):**
 
-    <%=  lang.example  %>
+    <%=  _lt.get('example')  %>
 
 **Formatted:**
 
-    <%=  sprintf(example_with_param, "Param value")  %>
+    <%=  _lt.get(example_with_param, "Param value")  %>
 
 --
 
 **On js file usage**
 
-     console.log(res.lang.example)
-
-**Formatted:**
-
-
-      console.log(res.sprintf(example, "Param value"))
-
+     var _lt = res.locals._lt;
+     _lt.load("home");
+     console.log(_lt.get("some_text", "deneme"));
 ---
 
 
@@ -148,16 +134,6 @@ Example:
 			-> users.json   
 	          -> mapping.json
 
-
-**mapping.json**
-
-    {
-    	"/" 	 		  : "home",
-    	"/about" 		  : "about",
-    	"/users/:user_id" : "users"
-     }
-
-This file matches your routes and language files. It supports parametrized urls.
 
 Please **STAR** and **WATCH** the project! :)
 
