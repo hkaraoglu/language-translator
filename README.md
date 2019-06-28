@@ -13,7 +13,7 @@ Text localization and translation module for NodeJS Express Framework.
 ## **Load**
 
     var  languageTranslator = require('language-translator');
-    app.use(languageTranslator(
+    app.use(languageTranslator.init(
       {
         langs          : ["tr", "en", "fr", "de", "es"], // ... And other languages
         defaultLang    : "en",

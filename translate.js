@@ -21,13 +21,20 @@ function translate(from, to, key, text, filePath)
             });
 
             resp.on('end', () => {
-                var translationResponse = JSON.parse(data);
-                var translatedText = "";
-                if(translationResponse.code == "200" && translationResponse.text != undefined && translationResponse.text.length > 0)
+                try
                 {
-                    translatedText = translationResponse.text[0];
+                    var translationResponse = JSON.parse(data);
+                    var translatedText = "";
+                    if(translationResponse.code == "200" && translationResponse.text != undefined && translationResponse.text.length > 0)
+                    {
+                        translatedText = translationResponse.text[0];
+                    }
+                    else
+                    {
+                        translatedText = text;
+                    }
                 }
-                else
+                catch(e)
                 {
                     translatedText = text;
                 }
