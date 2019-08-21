@@ -87,7 +87,6 @@ When your app started, firstly the module creates **language** folder in root di
     	      -> en
     		-> en.json // It creates for common texts
     		-> And your other language files...
-	      -> mapping.json
 
 
 --
@@ -116,8 +115,6 @@ When your app started, firstly the module creates **language** folder in root di
 ---
 
 
-## mapping.json
-
 Example:
 
 **Your Application directory:**
@@ -134,7 +131,7 @@ Example:
 			-> home.json
 			-> about.json
 			-> users.json   
-	          -> mapping.json
+
 
 
 Please **STAR** and **WATCH** the project! :)

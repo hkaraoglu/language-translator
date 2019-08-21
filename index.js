@@ -90,9 +90,9 @@ var init  = function(_config)
         {
             res.cookie(config.cookieName, config.cookieLang);
         }
+        res.locals.lt_config_cookieLang = config.cookieLang;
         var lfl = new LangFileLoader(req, res);
         res.locals[app.get('lt_config_instanceName')] = lfl;
-        res.locals.lt_config_cookieLang = config.cookieLang;
         next();
     };
 }
@@ -272,12 +272,14 @@ class LangFileLoader
     {
         this.req = req;
         this.res = res;
+        var fullPath = app.get("lt_config_langDir") + "/" + res.locals.lt_config_cookieLang + "/" + this.res.locals.lt_config_cookieLang + ".json";
+        this.data = JSON.parse(fs.readFileSync(fullPath, "utf8"));
     }
 
     load(filePath)
     {
         var fullPath = app.get("lt_config_langDir") + "/" + this.res.locals.lt_config_cookieLang + "/" + filePath + ".json";
-        this.data = JSON.parse(fs.readFileSync(fullPath, "utf8"));
+        this.data = Object.assign(this.data, JSON.parse(fs.readFileSync(fullPath, "utf8")));
     }
 
     get(key)
